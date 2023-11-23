@@ -1,0 +1,37 @@
+h2 {
+    background-color: lime;
+    text-align: center;
+}
+
+p {
+    color: gray;
+}
+
+/* Kombinator razmak - svi potomci u div tagu*/
+div p {
+    color: aquamarine;
+}
+ /* Kombinator > - svi ptomci direktni(deca, prvo koleno) */
+div>p {
+    border: 1px solid green;
+}
+
+/* Stilizacija linka */
+a {
+    color: lime;
+    text-decoration: none;
+}
+
+a:visited {
+    color: brown;
+}
+
+a:hover {
+    background-color: yellow;
+}
+
+/* Pseudo - selektori */
+
+p:first-child {
+    font-weight: bold;
+}

@@ -1,0 +1,45 @@
+h1 {
+    color: rgb(255, 63, 16);
+}
+h2 {
+    color: rgb(255, 16, 136);
+}
+p {
+    color: rgb(187, 16, 255);
+    font-size: 20px;
+}
+a {
+    color: rgb(211, 255, 16);
+}
+a:hover {
+    color: yellow;
+}
+body {
+    color: rgb(214, 127, 248);
+    font-family: arial;
+}
+img {
+    width: 400px;
+    height: 300px;
+}
+.novi_naslov {
+    text-align: center;
+}
+.paragrafi {
+    text-align: right;
+    font-size: 24px;
+}
+img {
+    border: 1px dashed black;
+}
+h2:nth-of-type(3) {
+    color: green;
+    text-align: center;
+    font-family: 'Times New Roman';
+}
+
+ul li:nth-child(odd) {
+    color: green;
+}
+
+
