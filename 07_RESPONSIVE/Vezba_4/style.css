@@ -94,7 +94,7 @@ h2 {
 }
 .destinacije ul li {
     background-color: lightgray;
-    margin: 5px;
+    margin: 5px 0;
     padding: 10px;
     width: 80%;
 }
@@ -102,7 +102,7 @@ h2 {
     margin-top: 50px;
 }
 label, input, textarea {
-    margin: 5px;
+    margin: 5px 0;
     width: 80%;
 }
 input {
@@ -116,4 +116,24 @@ input {
     background-color: blue;
     color: white;
     border: none;
+}
+
+@media only screen and (max-width: 999px) {
+    [class*='col-'] {
+        width: 100%;
+    }
+    label, input, textarea {
+        width: 100%;
+    }
+    .destinacije ul li {
+        width: 100%;
+    }
+    nav h3, nav ul, nav ul li {
+        float: none;
+        margin: 0;
+        padding: 5px;
+    }
+    nav ul li {
+        border-top: 1px solid lightblue;
+    }
 }
