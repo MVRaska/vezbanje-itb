@@ -1,0 +1,29 @@
+header {
+    background-image: url(IMG_7850.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+}
+div {
+    font-size: 30px;
+    /* gornji levi ugo */
+    /* top: 0;
+    left: 0; */
+    /* gornji desni ugao */
+    /* top: 0;
+    right: 0; */
+    /* donji levi ugao */
+    /* bottom: 0;
+    left: 0; */
+    /* donji desni ugao */
+    /* bottom: 0;
+    right: 0; */
+    /* centriran uodnosu na header */
+    position: relative;
+    top: 50%;
+    width: 500px;
+    margin: auto;
+    
+    
+}

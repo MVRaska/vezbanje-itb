@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: arial;
+}
+h1 {
+    text-align: center;
+    color: blue;
+}
+nav{
+    background-color: blue;
+    overflow: hidden;
+    padding: 5px;
+    font-size: 20px;
+}
+nav h3, nav ul {
+    float: left;
+}
+nav h3 {
+    font-style: italic;
+    color: #555;
+    margin: 0 5px 0 25px;
+}
+nav ul {
+    overflow: hidden;
+    list-style: none;
+}
+nav ul li {
+    float: left;
+    margin-left: 20px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.row {
+    overflow: hidden;
+    margin: 20px 60px 20px 20px;
+}
+[class*='col-'] {
+    float: left;
+}
+.col-1 {
+    width: 8.33%;
+}
+.col-2 {
+    width: 16.66%;
+}
+.col-3 {
+    width: 25%;
+}
+.col-4 {
+    width: 33.33%;
+}
+.col-5 {
+    width: 41.66%;
+}
+.col-6 {
+    width: 50%;
+}
+.col-7 {
+    width: 58.33%;
+}
+.col-8 {
+    width: 66.66%;
+}
+.col-9 {
+    width: 75%;
+}
+.col-10 {
+    width: 83.33%;
+}
+.col-11 {
+    width: 91.66%;
+}
+.col-12 {
+    width: 100%;
+}
+
+h2 {
+    margin: 0 0 5px 15px;
+}
+.destinacije ul {
+    list-style: none;
+}
+.destinacije ul li {
+    background-color: lightgray;
+    margin: 5px;
+    padding: 10px;
+    width: 80%;
+}
+.kontakt {
+    margin-top: 50px;
+}
+label, input, textarea {
+    margin: 5px;
+    width: 80%;
+}
+input {
+    padding: 5px;
+}
+[type='checkbox'], [type='submit'] {
+    width: auto;
+    margin-top: 15px;
+}
+[type='submit'] {
+    background-color: blue;
+    color: white;
+    border: none;
+}
