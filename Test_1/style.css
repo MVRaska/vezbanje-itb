@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding-bottom: 200px;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+.col-2 {
+    width: 16.66%;
+}
+.col-3 {
+    width: 25%;
+}
+.col-4 {
+    width: 33.33%;
+}
+.col-5 {
+    width: 41.66%;
+}
+.col-6 {
+    width: 50%;
+}
+.col-7 {
+    width: 58.33%;
+}
+.col-8 {
+    width: 66.66%;
+}
+.col-9 {
+    width: 75%;
+}
+.col-10 {
+    width: 83.33%;
+}
+.col-11 {
+    width: 91.66%;
+}
+.col-12 {
+    width: 100%;
+}
+
+/* header */
+
+header ul {
+    list-style: none;
+    overflow: hidden;
+}
+header ul li {
+    float: left;
+    background-color: orange;
+    border-left: 1px solid white;
+    text-align: center;
+    padding: 10px;
+}
+header ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+header ul li:hover {
+    background-color: brown;
+}
+
+/* sekcija 1 */
+
+#prvi h1 {
+    color: brown;
+    padding: 10px;
+}
+
+/* sekcija 2 */
+
+#drugi {
+    overflow: hidden;
+}
+#drugi div {
+    float: left;
+    margin: 20px 0;
+    padding: 10px;
+    height: 400px;
+    background-color: burlywood;
+    position: relative;
+    text-align: center;
+}
+#drugi img {
+    width: 90%;
+} 
+#drugi p {
+    position: absolute;
+    bottom: 5%;
+}
+
+/* footer */
+
+footer {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: lightpink;
+}
+footer p {
+    float: left;
+    width: 50%;
+}
+footer img {
+    width: 50px;
+    float: right;
+}
+
+
+/* responsive do 700px */
+
+@media only screen and (max-width: 700px) {
+    [class*='col-'] {
+        width: 100%;
+    }
+    #drugi img {
+        width: 70%;
+    }
+    footer p {
+        width: 100%;
+    }
+    footer img {
+       
+    }
+    header ul li {
+        border-bottom: 1px solid white;
+    }
+}
