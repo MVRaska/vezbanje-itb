@@ -217,6 +217,160 @@ function sedmiDan(n){
 }
 sedmiDan(11);
 
+// zadatak 8
+
+function deljivSaTri(n, m) {
+    let brojac = 0;
+    for(let i = n; i <= m; i++) {
+        if(i % 3 == 0) {
+            console.log(i);
+            brojac++;
+        }
+    }
+    console.log(`U intervalu od ${n} do ${m} ima ${brojac} brojeva deljivih sa tri.`);
+    return brojac;
+}
+let a = deljivSaTri(10, 30);  //Izvrsi funkciju
+console.log(a);
+
+//zadatak 9
+
+function sumiraj(n, m) {
+    let sum = 0;
+    for(let i = n; i <= m; i++) {
+        sum += i;
+    }
+    return sum;
+}
+console.log(sumiraj(5, 11));
+
+// zadatak 10
+
+function mnozi(n, m) {
+    let pro = 1;
+    for(let i = n; i <= m; i++) {
+        pro *= i;
+    }
+    return pro;
+}
+console.log(mnozi(3, 7));
+
+//zadatak 11
+
+function aritmeticka(n, m) {
+    let sum = 0;
+    let br = 0;
+    for(let i = n; i <= m; i++) {
+        sum += i;
+        br ++;
+    }
+    return sum / br;
+}
+console.log(aritmeticka(3, 9));
+
+// zadatak 12
+
+function aritmetickaTri(n, m) {
+    let sum = 0;
+    let br = 0;
+    for(let i = n; i <= m; i++) {
+        if(i % 10 == 3) {
+            sum += i;
+            br++;
+        }
+    }
+    return sum / br;
+}
+console.log(aritmetickaTri(21, 56));
+
+// zadatak 13
+
+function velicinaFonta(n) {
+    let isp = document.getElementById('ispis');
+    isp.innerHTML = `<p style='font-size: ${n}px;'>Lorem ipsum</p>`;
+}
+velicinaFonta(30);
+
+// zadatak 14
+
+function recenica5() {
+    for(let i = 1; i <= 5; i++) {
+        document.write(`<p style='font-size: ${i*5}px;'>Lorem ipsum</p>`);
+    }
+}
+recenica5();
+
+// zadatak 15
+// a
+
+function poslednjaPlata(n, a, d) {
+    return a + (n - 1) * d;
+}
+console.log(poslednjaPlata(4, 5, 1));
+
+// b
+
+function ukupnaPlata(n, a, d) {
+    let suma = a;
+    let plata = 0;
+    for(let i = 1; i < n; i++) {
+        plata = a + i * d;
+        suma += plata;
+    }
+    return suma;
+}
+console.log(ukupnaPlata(4, 50000, 10000));
+50+60+70+80
+
+// zadatak 15, drugi nacin
+
+function poslednjaPlata(n, a, d) {
+    return a + (n - 1) * d;
+  }
+  console.log(poslednjaPlata(6, 1000, 100));
+  function ukupnaPlata(n, a, d) {
+    return ((a + poslednjaPlata(n, a, d)) / 2) * n;
+  }
+  console.log(ukupnaPlata(3, 1000, 100));
+
+// // zadatak 15, treci nacin
+// // a
+function poslednjaPlata(n, a, d) {
+  let povisica = 0;
+  for (let i = 1; i < n; i++) {
+    povisica = povisica + d;
+  }
+  return a + povisica;
+}
+console.log(poslednjaPlata(10, 1000, 50));
+
+
+// // b
+
+function ukupnaPlata(n, a, d) {
+  let uplata = 0;
+  let povisica = 0;
+  for (let i = 1; i < n; i++) {
+    povisica = povisica + d;
+    let plata = a + povisica;
+    uplata += plata
+  }
+  return uplata + a;
+}
+console.log(ukupnaPlata(10, 1000, 50));
+console.log(1000+1050+1100+1150+1200+1250+1300+1350+1400+1450);
+
+
+// zadatak 16
+function igreBezGranica(t, p, n) {
+    if(t < p || t > p + n) {
+        console.log('Cekanje je 0s');
+    } else {
+        let cekanje = p + n -t;
+        console.log(`Takmicar je potrebno da saceka ${cekanje}s.`);
+    }
+}
+igreBezGranica(15, 20, 25);
 
 
 
@@ -290,3 +444,28 @@ function praksa(n, a, d) {
     return ukupno;
 }
 console.log(praksa(4, 50000, 1.2));
+
+//vezba - zadatak 8
+
+function prethodniDan(dan, mesec, godina) {
+    let danPre = dan - 1;
+    let mesecPre = mesec;
+    let godinaPre = godina;
+    if(dan == 1) {
+        danPre = 31;
+        mesecPre = mesec - 1;
+        if(mesec == 1) {
+            mesecPre = 12;
+            godinaPre = godina - 1;
+        } else if(mesec == 3 && godina % 4 == 0) {
+            danPre = 29;
+        } else if(mesec == 3 && godina % 4 != 0) {
+            danPre = 28;
+        } else if(mesec == 5 || mesec == 7 || mesec == 10 || mesec == 12) {
+            danPre = 30;
+        }  
+    }
+    return `${danPre}.${mesecPre}.${godinaPre}.`;
+}
+console.log(prethodniDan(6, 3, 2001));
+

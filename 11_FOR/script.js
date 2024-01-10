@@ -82,7 +82,7 @@ for(let a5 = n; a5 <= m; a5++) {
 console.log(`Suma kvadrata brojeva od ${n} do ${m} iznosi ${sum}`);
 
 // zadatak 9
-//Preuzeti proizoljne tri slike sa istom ekstenzijom i imenovati ih 1, 2 i 3. For petljom u HTML-u ispisati svaku od sličica uz pomoć brojača (iteratora)
+//Preuzeti proizvoljne tri slike sa istom ekstenzijom i imenovati ih 1, 2 i 3. For petljom u HTML-u ispisati svaku od sličica uz pomoć brojača (iteratora)
 
 for(i = 1; i <= 3; i++) {
     document.write(`<img src='${i}.jpg'>`);
