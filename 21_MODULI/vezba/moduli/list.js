@@ -6,7 +6,7 @@ let generateList = parent => {
     return lista;
 }
 
-let generateListItem = (parent, src) => {
+let generateItem = (parent, src) => {
     let listItem = document.createElement('li');
     parent.appendChild(listItem);
     let slika = generateImage(src);
@@ -14,4 +14,4 @@ let generateListItem = (parent, src) => {
     return listItem;
 }
 
-export {generateList, generateListItem};
+export {generateList, generateItem};

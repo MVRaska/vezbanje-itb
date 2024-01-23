@@ -20,9 +20,9 @@ btnIzracunaj.addEventListener('click', (e) => {
     let brLili = inLili.value;
     let brGerbera = inGerber.value;
     
-    if(brRuza % 1 != 0 || 
-        brLili % 1 != 0 || 
-        brGerbera % 1 != 0) {
+    if((brRuza % 1 != 0 || brRuza < 0) || 
+        (brLili % 1 != 0 || brLili < 0) || 
+        (brGerbera % 1 != 0 || brGerbera < 0)) {
             alert('Pogrešan unos broja cvetova');
             divIspis.innerHTML = '';
         } else {

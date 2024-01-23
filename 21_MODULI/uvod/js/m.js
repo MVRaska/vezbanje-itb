@@ -8,4 +8,4 @@ let racunaj = () => { // funkcija koja se trazi od mene
     console.log(rezultat + 10);
 }
 
-export {rezultat, racunaj};
+// export {rezultat, racunaj};

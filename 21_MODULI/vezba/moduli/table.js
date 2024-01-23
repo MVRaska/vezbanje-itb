@@ -17,7 +17,7 @@ let generateTableRow = parent => {
     return red;
 }
 
-let generateTableItem = (parent, src) => {
+let generateItem = (parent, src) => {
     let celija = document.createElement('td');
     celija.style.border = '1px solid lightblue';
     celija.src = src;
@@ -27,4 +27,4 @@ let generateTableItem = (parent, src) => {
     return celija;
 }
 
-export {generateTable, generateTableRow, generateTableItem};
+export {generateTable, generateTableRow, generateItem};

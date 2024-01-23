@@ -290,7 +290,7 @@ let Polaznik1 = {
 
 let Polaznik2 = {
     ime: 'Milan',
-    prezime: 'Lalic',
+    prezime: 'Peric',
     bodoviZavrsTest: 65
 };
 
@@ -310,7 +310,7 @@ let Polaznik4 = {
 let Kurs1 = {
     naziv: 'Razvoj veb stranica: JS',
     grad: 'Nis',
-    polaznici: [Polaznik1, Polaznik4, Polaznik3]
+    polaznici: [Polaznik1, Polaznik4, Polaznik2]
 };
 
 let Kurs2 = {
@@ -328,7 +328,7 @@ let Kurs3 = {
 let Kurs4 = {
     naziv: 'Testiranje softvera: QA',
     grad: 'Beograd',
-    polaznici: [Polaznik1, Polaznik3, Polaznik3, Polaznik4]
+    polaznici: [Polaznik1, Polaznik2, Polaznik3, Polaznik4]
 };
 
 let kursevi = [Kurs1, Kurs2, Kurs3, Kurs4];
@@ -337,14 +337,11 @@ let kursevi = [Kurs1, Kurs2, Kurs3, Kurs4];
 //Funkciji se prosleđuje niz kurseva i string koji predstavlja grad, a vraća broj kurseva koji se održavaju u tom gradu.
 
 
-
 let kurseviUGradu = (niz, a) => {
     let br = 0;
-    let kurseviUGradu = [];
     niz.forEach(kurs => {
-        if(kurs.grad == a && !kurseviUGradu.includes(kurs.naziv) ) {
-            kurseviUGradu.push(kurs.naziv);
-            br++
+        if(kurs.grad == a) {
+            br++;
         }
     });
     return br;
@@ -384,16 +381,28 @@ kursNajvisePolaznika(kursevi);
 // 4.
 //Funkciji se prosleđuje niz kurseva i string koji predstavlja prezime, a ispisuje sve polaznike (ime i prezime polaznika, kao i naziv kursa i grad gde pohađaju kurs) čije ime sadrži dati parametar.
 
-let prezimeIKurs = (niz, a) => {
+let polazniciSaPrezimenom = (niz, prezime) => {
     niz.forEach(kurs => {
         kurs.polaznici.forEach(polaznik => {
-            if(polaznik.prezime == a) {
-                document.body.innerHTML += `Polaznici sa prezimenom ${a} su: ${polaznik.ime} ${polaznik.prezime}, ${kurs.naziv}, ${kurs.grad} <br>`
+            if(polaznik.prezime == prezime) {
+                console.log(polaznik.ime, polaznik.prezime, kurs.naziv, kurs.grad);
             }
         });
     });
 }
-prezimeIKurs(kursevi, 'Lalic');
+polazniciSaPrezimenom(kursevi, 'Peric');
+
+
+let prezimeIKurs = (niz, a) => {
+    niz.forEach(kurs => {
+        kurs.polaznici.forEach(polaznik => {
+            if(polaznik.prezime == a) {
+                document.body.innerHTML += `Polaznici sa prezimenom ${a} su: ${polaznik.ime} ${polaznik.prezime}, ${kurs.naziv}, ${kurs.grad} <br>`;
+            }
+        });
+    });
+}
+prezimeIKurs(kursevi, 'Peric');
 
 // 5.
 //Funkciji se prosleđuje niz kurseva, a ispisuje naziv kursa i grad gde je ostvarena najbolja prosečna ocena na završnom testu. Ukoliko ima više takvih kurseva, ispisati bilo koji.
@@ -974,25 +983,25 @@ Kreirati niz blogova, pri čemu je svaki element tog niza jedan objekat tj. po j
 */
 
 let blog1 = {
-    naslov: 'Zdravlje',
+    naslov: 'Zdravlje!',
     brLajk: 123,
     brDislajk: 11
 };
 
 let blog2 = {
     naslov: 'Lepota',
-    brLajk: 150,
+    brLajk: 200,
     brDislajk: 150
 };
 
 let blog3 = {
-    naslov: 'Moda',
+    naslov: 'Modanjige',
     brLajk: 116,
-    brDislajk: 70
+    brDislajk: 66
 };
 
 let blog4 = {
-    naslov: 'Knjige',
+    naslov: 'Knjige!',
     brLajk: 251,
     brDislajk: 36
 };
@@ -1052,18 +1061,76 @@ duploLajkova(blogovi);
 // 5.
 //Kojoj se prosleđuje niz blogova, a ona ispisuje sve one naslove blogova koji se završavaju uzvičnikom.
 
+let nasloviUzvicnik = niz => {
+    niz.forEach(blog => {
+        if(blog.naslov[blog.naslov.length - 1] == '!') {
+            document.body.innerHTML += `<br>Naslov koji se zavrsava uzvicnikom je: ${blog.naslov}`;
+        }
+    });
+}
+nasloviUzvicnik(blogovi);
 
 // 6.
 //Kojoj se prosleđuje niz blogova, kao i $granica, a ona vraća broj blogova čiji je broj lajkova veći od granice.
 
+let brLajkovaVeciOdGr = (niz, granica) => {
+    let br = 0;
+    niz.forEach(blog => {
+        if(blog.brLajk > granica) {
+            br++;
+        }
+    });
+    return br;
+}
+console.log(brLajkovaVeciOdGr(blogovi, 100));
 
 // 7.
 //Kojoj se prosleđuje niz blogova, kao i neka reč, a ona vraća prosečan broj lajkova za one blogove koji u naslovu sadrže prosleđenu reč.
 
+let prosecnoLajkRec = (niz, rec) => {
+    let sum = 0;
+    let br = 0;
+    niz.forEach(blog => {
+        if(blog.naslov.includes(rec)) {
+            sum += blog.brLajk;
+            br++;
+        }
+    });
+    return sum / br;
+}
+console.log(prosecnoLajkRec(blogovi, 'njige'));
 
 // 8.
 //Kojoj se prosleđuje niz blogova, a ona ispisuje blogove koji imaju iznadprosečan broj lakova.
 
+let nadprosecnoLike = niz => {
+    let sum = 0;
+    niz.forEach(blog => {
+        sum += blog.brLajk;
+    });
+    console.log(sum / niz.length);
+    niz.forEach(blog => {
+        if(blog.brLajk > sum / niz.length) {
+            document.body.innerHTML += `<br>Blog koji ima iznadprosecan broj lajkova je: ${blog.naslov}`;
+        }
+    });
+}
+nadprosecnoLike(blogovi);
 
 // 9.
 //Kojoj se prosleđuje niz blogova, a ona ispisuje blogove koji imaju ispodprosečan broj dislakova.
+
+let blogIspodprosDislike = niz => {
+    let sum = 0;
+
+    niz.forEach(blog => {
+        sum += blog.brDislajk;
+    });
+    console.log(sum / niz.length);
+    niz.forEach(blog => {
+        if(blog.brDislajk < sum / niz.length) {
+            document.body.innerHTML += `<br>Blog koji ima ispodprosecan broj dislajkova je: ${blog.naslov}`;
+        }
+    });
+}
+blogIspodprosDislike(blogovi);

@@ -10,4 +10,3 @@ let rezultat = x + y; // promenljiva koja pamti rezultat
 let racunaj = () => { // funkcija koja se trazi od mene
     document.body.innerHTML += `<p>${rezultat}</p>`;
 }
-racunaj();
