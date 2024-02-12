@@ -8,8 +8,8 @@ mojaFunkcija(() => {
 
 ////////////////////////
 
-let sabiranje = () => {
-    mojaFunkcija(4, 5);
+let sabiranje = funkcija => {
+    funkcija(4, 5);
 }
 
 // 1. nacin

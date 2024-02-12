@@ -1,0 +1,126 @@
+// Napraviti chats kolekciju u Firestore, koja će sadržati sledeća polja:
+// documentID (auto increment) – ID poruke koji se automatski dodeljuje
+// message (string) – Tekst poruke
+// usrename (string) – Korisničko ime korisnika koji je napisao poruku
+// room (string) – Soba u kojoj je kreirana poruka
+// created_at (timestamp) – Datum i vreme kreiranja poruke
+// Povezati (konektovati) bazu podataka (kreiranu kolekciju) sa svojim projektom
+
+
+class Chatroom {
+    constructor(room, userName) {
+        this.room = room;
+        this.userName = userName;
+        this.chats = db.collection('chats');
+        this.unsub = false;
+    }
+
+    set room(r) {
+        this._room = r;
+        if(this.unsub) {
+            this.unsub();
+        }
+    }
+    set userName(un) {
+        if(un.length > 2 && un.length < 10 && un.trim() != '') {
+            this._userName = un;
+        } else {
+            alert('Pogresno uneto korisnicko ime');
+        }   
+    }
+
+    get room() {
+        return this._room;
+    }
+    get userName() {
+        return this._userName;
+    }
+
+    /*
+    addChat(message) {
+        let datum = new Date();
+
+        this.chats.doc()
+        .set({
+            message: message,
+            username: this.userName,
+            room: this.room,
+            created_at: firebase.firestore.Timestamp.fromDate(datum)
+        })
+        .then(() => {
+            console.log('Uspešno dodat čet!');
+        })
+        .catch(e => {
+            console.log(`Greska: ${e}`);
+        })
+    }
+    */
+
+    /*
+    async addChat(mess) {
+        // kreikanje dokumenta koji zelimo da dodamo u bazu
+
+        let docChat = {
+            message: mess,
+            username: this.userName,
+            room: this.room,
+            created_at: new Date()
+        };
+
+        let response = await this.chats.add(docChat);   //pamti dokument u bazi
+
+        return response;   //vraca promise na koji moze da se doda then() i catch()
+    }
+    */
+
+    async addChat(mess) {
+        // kreiranje dokumenta koji zelimo da dodamo u bazu
+
+        try {
+            let docChat = {
+                message: mess,
+                username: this.userName,
+                room: this.room,
+                created_at: new Date()
+            };
+
+            let response = await this.chats.add(docChat);   //pamti dokument u bazi
+
+            docChat.id = response.id;
+            console.log(response.id);
+
+            return { id: response.id, referenca: response};   //vraca promise na koji moze da se doda then() i catch()
+        }
+        catch {
+            console.error('Doslo je do greske', err);
+        } 
+    }
+
+    getChats(callback) {
+        this.unsub = this.chats
+        .where('room', '==', this.room)
+        .orderBy('created_at')
+        .onSnapshot(snapShot => {
+            snapShot.docChanges().forEach(change => {
+                if(change.type == 'added') {
+                    // console.log(change);
+                    // console.log(change.doc.data());
+                    callback(change.doc.data());
+                }
+            });
+        });
+    }
+
+    aktivniKorisnik(aktivan) {
+        let divKorisnickoIme = document.createElement('div');
+        divKorisnickoIme.innerHTML = `Korisnicko ime je promenjeno u "<span style='font-weight: bold;'>${aktivan}</span>"`;
+        document.body.appendChild(divKorisnickoIme);
+        setTimeout(() => {
+            document.body.removeChild(divKorisnickoIme);
+        }, 3000);
+    } 
+}
+
+export {Chatroom};
+
+
