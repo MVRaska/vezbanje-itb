@@ -12,7 +12,7 @@ const BookContextProvider = ({children}) => {
 const [books, setBooks] = useState([
     {title: 'Ubiti pticu rugalicu', id: 1},
     {title: 'Nepodnosljiva lakoca react-a', id: 2},
-    {title: 'Ko je maznuo moj sir', id: 3},
+    {title: 'Ko je maznuo moj sir', id: 3}
 ]);
 
     return <BookContext.Provider value={{books}}>{children}</BookContext.Provider>

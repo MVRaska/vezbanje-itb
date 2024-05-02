@@ -9,6 +9,29 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
+/******** section ********/
+#aktivniKorisnik {
+    position: relative;
+    left: 85%;
+}
+#aktivniKorisnik span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: lime !important;
+}
+p {
+    display: inline-block;
+    margin-right: 5px;
+    color: blueviolet;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+
+/******** header ********/
 h1 {
     text-align: center;
     color: blueviolet;
@@ -18,6 +41,8 @@ header, nav, main, section {
     margin-bottom: 20px;
 }
 
+
+/******** nav ********/
 nav {
     margin: 40px 0;
 }
@@ -44,6 +69,61 @@ h3 {
     color: blueviolet;
 }
 
+
+/******** main ********/
+main {
+    margin: 0 5% 40px;
+}
+
+ul {
+    list-style: none;
+}
+
+/* li.ostali */
+li {
+    background: rgb(231, 219, 241);
+    border-radius: 0 15px 15px 15px;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    color: blueviolet;
+    width: 80%;
+    position: relative;
+}
+
+/* poruke aktivnog korisnika */
+.aktivno {
+    background: rgb(250, 199, 199);
+    border-radius: 15px 0 15px 15px;
+    margin-bottom: 10px;
+    padding: 5px 15px;
+    color: blueviolet;
+    position: relative;
+    left: 20%;
+}
+
+/* ispis aktivnog korisnika */
+div {
+    width: 80%;
+    padding: 40px 5% 40px 20px; 
+    background: pink;
+    color: blueviolet;
+    border-radius: 15px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+img {
+    opacity: 15%;
+    position: absolute;
+    bottom: 7px;
+    right: 5%;
+    width: 20px;
+    cursor: pointer;
+}
+
+
+/******** forme ********/
 form {
     margin: 10px 0;
     width:  100%;
@@ -57,6 +137,7 @@ button {
     border: 0px;
     font-size: 0.9rem;
     border-radius: 4px;
+    cursor: pointer;
 }
 input, textarea {
     padding: 4px;
@@ -78,54 +159,8 @@ input[type='color'] {
     vertical-align: middle; /* Postavljanje vertikalne ravnoteže */
 }
 
-main {
-    margin: 0 5% 40px;
-}
 
-ul {
-    list-style: none;
-}
-
-/* li.ostali */
-li {
-    background: rgb(231, 219, 241);
-    border-radius: 0 15px 15px 15px;
-    margin-bottom: 10px;
-    padding: 10px 15px;
-    color: blueviolet;
-    width: 80%;
-    position: relative;
-}
-
-.aktivno {
-    background: rgb(250, 199, 199);
-    border-radius: 15px 0 15px 15px;
-    margin-bottom: 10px;
-    padding: 5px 15px;
-    color: blueviolet;
-    position: relative;
-    left: 20%;
-}
-
-div {
-    width: 80%;
-    padding: 40px 5% 40px 20px; 
-    background: pink;
-    color: blueviolet;
-    border-radius: 15px;
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-}
-
-img {
-    opacity: 15%;
-    position: absolute;
-    bottom: 7px;
-    right: 5%;
-    width: 20px;
-}
-
+/******** responsive ********/
 @media only screen and (max-width: 520px) {
     nav span {
         width: 45%;

@@ -1,13 +1,14 @@
-import {useState } from 'react';
-import {ThemeContext} from 'cetvrti-cas/ThemeContext';
-import { AuthContext } from './cetvrti-cas/AuthContext';}
+import {useContext} from 'react';
+import {ThemeContext} from './ThemeContext';
+import { AuthContext } from './AuthContext';
 
 const Navbar = () => {
-    const {togglrTheme} = useContext(ThemeContext);
+    const {toggleTheme} = useContext(ThemeContext);
     const {isAuth, toggleAuth} = useContext(AuthContext);
+    
     return <div>
-        <button onClick={toogleTheme}>toggle theme</button>
-        <button onClick={}>toggle theme</button>
+        <button onClick={toggleTheme}>toggle theme</button>
+        <button onClick={toggleAuth}>{isAuth ? 'logout' : 'login'}</button>
     </div>
 }
 

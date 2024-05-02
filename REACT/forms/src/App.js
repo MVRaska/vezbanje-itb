@@ -1,5 +1,6 @@
 
 import './App.css';
+
 /*
 drugi cas - forms
 // import Form from './components/Form.jsx';
@@ -13,29 +14,23 @@ import FormVezba from './components/Vezba';
 
 // __________________________________________
 
-{/*
+/*
 treci cas - hooks
 import Counter from './treci-cas-hooks-components/Counter';
 import {useState} from 'react';
 import Select from './treci-cas-hooks-components/Select';
 import SongList from './treci-cas-hooks-components/SongList'; 
-*/}
+*/
 
 // __________________________________________
 
-import BookContextProvider from "./cetvrti-cas/BookContext";
-import BookList from  "./cetvrti-cas/BookList";
-import ThemeContextProvider from './cetvrti-cas/ThemeContext';
-import Navbar from './cetvrti-cas/Navbar';
-import AuthContextProvider from './cetvrti-cas/AuthContext'
+// cetvrti cas - Context API
+// import BookContextProvider from "./cetvrti-cas/BookContext";
+// import BookList from  "./cetvrti-cas/BookList";
+// import ThemeContextProvider from './cetvrti-cas/ThemeContext';
+// import Navbar from './cetvrti-cas/Navbar';
+// import AuthContextProvider from './cetvrti-cas/AuthContext'
 
-import CounterReducer from '';
-import BookList from '';
-import BookContextProvider from '';
-
-// __________________________________________
-
-//cetvrti cas - context API, useReduce
 // const Component1 = (props) => {
 //   return <div>component1 {props.children}</div>
 // }
@@ -43,6 +38,13 @@ import BookContextProvider from '';
 // const Component2 = () => {
 //   return <div>component2</div>
 // }
+
+
+// cetvrti cas - Reducer - useReduce hook
+import CounterReducer from './cetvrti-cas/Reducer/CounterReducer';
+import BookContextProvider from './cetvrti-cas/Reducer/BookContext';
+import BookList from './cetvrti-cas/Reducer/BookList';
+import BookForm from './cetvrti-cas/Reducer/BookForm';
 
 // __________________________________________
 
@@ -61,7 +63,7 @@ function App() {
   return (  
     <div className="App">
 
- {/* __________________________________________ */}
+    {/* __________________________________________ */}
       
     {/* 
       drugi cas - forme, folder components
@@ -89,19 +91,29 @@ function App() {
 
       {/* __________________________________________ */}
 
-      <ThemeContextProvider>
+
+    {/* cetvrti cas - Context API */}
+      {/* <ThemeContextProvider>
         <AuthContextProvider>
           <Navbar />
           <BookContextProvider>
             <BookList />
           </BookContextProvider>
-        </AuthContextProvider>
-        
-      </ThemeContextProvider>
+        </AuthContextProvider>  
+      </ThemeContextProvider> */}
 
       {/* <Component1>
         <Component2 />
       </Component1> */}
+
+    {/* cetvrti cas - Recducer - useReduce hook */}
+
+      <CounterReducer />
+
+      <BookContextProvider>
+        <BookList />
+        <BookForm />
+      </BookContextProvider>
 
     </div>
   );

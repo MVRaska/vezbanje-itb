@@ -60,6 +60,7 @@ class chatUI {
         let li = document.createElement('li');
         if(data.message != '') {
             li.innerHTML = `${data.username}: ${data.message} <br> ${this.formatDate(data)}`;
+            li.classList.add(data.username);
 
             let img = document.createElement('img');
             img.src = 'kanta.png';

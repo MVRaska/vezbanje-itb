@@ -151,6 +151,8 @@ let btnUpdate = document.getElementById('update');
 
 let spans = document.querySelectorAll('span');
 
+let pAktivniKorisnik = document.querySelector('p');
+
 
 let noviUsername = 'anonymus';
 if(localStorage.getItem('username')) {
@@ -163,13 +165,29 @@ if(localStorage.getItem('color')) {
     inputColor.value = boja;
 }
 
-let chatroom = new Chatroom('#general', noviUsername);
+let room = '#general';
+if(localStorage.getItem('soba')) {
+    room = JSON.parse(localStorage.getItem('soba'));
+    spans.forEach(span => {
+        span.style.background = 'blueviolet';
+        spans.forEach(span => {
+            if(span.textContent == room) {
+                span.style.background = 'rgb(96, 4, 182)';
+            }
+        }); 
+    });
+}
+
+let chatroom = new Chatroom(room, noviUsername);
+
+pAktivniKorisnik.innerHTML = noviUsername;
 
 chatroom.getChats(data => {  
     chatUI1.list.appendChild(chatUI1.templateLI(data, chatroom.userName));
 });
 
 spans.forEach(span => {
+
     span.addEventListener('click', () => {
         chatUI1.deleteUl();
         spans.forEach(otherSpan => {
@@ -177,6 +195,9 @@ spans.forEach(span => {
         });
 
         span.style.background = 'rgb(96, 4, 182)';
+
+        localStorage.setItem('soba', JSON.stringify(span.textContent));
+
         chatroom.room = span.textContent;
         chatroom.getChats(data => {  
             chatUI1.list.appendChild(chatUI1.templateLI(data, chatroom.userName));
@@ -205,6 +226,7 @@ btnUpdate.addEventListener('click', e => {
     chatroom.aktivniKorisnik(inputUserName.value);
 
     chatUI1.deleteUl();
+    pAktivniKorisnik.innerHTML = inputUserName.value;
     chatroom.getChats(data => {  
         chatUI1.list.appendChild(chatUI1.templateLI(data, chatroom.userName));
     });
@@ -223,16 +245,14 @@ btnColor.addEventListener('click', e => {
 ul.addEventListener('click', async e => {
     if(e.target.tagName == 'IMG') {
         let liDelete = e.target.parentNode;
-        let docId = liDelete.querySelector('img').getAttribute('id');
+        let docId = e.target.id;
         console.log('ID dokumenta:', docId);
-        
-        try {
-            await db.collection('chats').doc(docId).delete();
-            
-            ul.removeChild(liDelete);
-        } catch (err) {
-            console.error('Greška prilikom uklanjanja dokumenta iz baze:', err);
+
+        if(liDelete.class == chatroom.userName) {
+            chatroom.deleteMsgDB(docId);
         }
+
+        ul.removeChild(liDelete);
     }
 });
 
@@ -244,9 +264,11 @@ ul.addEventListener('click', async e => {
 // .where('room', '==', this.room)
 // .orderBy('created_at')
 // .onSnapshot(snapShot => {
+//     console.log(snapShot);
 //     snapShot.docChanges().forEach(change => {
 //         if(change.type == 'added') {
 //             // console.log(change);
+//             // console.log(change.doc);
 //             // console.log(change.doc.data());
 //             callback(change.doc.data());
 //         }

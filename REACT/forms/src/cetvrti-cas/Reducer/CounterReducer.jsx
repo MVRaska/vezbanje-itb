@@ -1,6 +1,6 @@
 import{useReducer} from 'react';
 //useReducer je alternativa useState hook-a
-//koristi se za kompleksnije state-ove koji se mogu modifikovati
+//koristi se za kompleksnije state-ove koji se mogu modifikovati koristeci reducer funkciju
 
 const initialState = 0;
 
@@ -10,7 +10,7 @@ const reducer = (state, action) => {
         case 'increment':
             return state + 1;
         case 'decrement':
-            return state + 1;
+            return state - 1;
         case 'reset':
             return 0;
 
@@ -30,3 +30,5 @@ const CounterReducer = () => {
         <button onClick={() => dispatch('increment')}>increment</button>
     </>
 }
+
+export default CounterReducer;

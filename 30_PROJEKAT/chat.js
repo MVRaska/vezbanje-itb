@@ -103,9 +103,9 @@ class Chatroom {
         .onSnapshot(snapShot => {
             snapShot.docChanges().forEach(change => {
                 if(change.type == 'added') {
-                    // console.log(change);
-                    // console.log(change.doc.data());
-                    callback(change.doc.data());
+                    let docData = change.doc.data();
+                    docData.id = change.doc.id;
+                    callback(docData);
                 }
             });
         });
@@ -119,6 +119,19 @@ class Chatroom {
             document.body.removeChild(divKorisnickoIme);
         }, 3000);
     } 
+
+    deleteMsgDB(id) {
+        this.chats.doc(id)
+        .delete()
+        .then(() => {
+            console.log('Dokument uspesno izbrisan iz baze podataka');
+        })
+        .catch(e => {
+            console.log(e => {
+                console.log(`Greska prilikom brisanja dokumenta u bazi podataka: ${e}`);
+            });
+        })
+    }
 }
 
 export {Chatroom};

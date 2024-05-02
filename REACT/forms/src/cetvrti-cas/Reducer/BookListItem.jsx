@@ -1,27 +1,17 @@
 import {useContext} from 'react';
-import {BookContext} from '';
+import {BookContext} from './BookContext';
 
 
 const BookListItem = ({book}) => {
-    const {books} = useContext(BookContext);
+    const {dispatch} = useContext(BookContext);
 
-    return <>
-    <li>
-        <div>
-            <div>{book.title}</div>
-            <div>{book.author}</div>
-            <span>X</span>
-        </div>
-    </li>
-    </>
+    return <li onClick={() => dispatch({type: 'REMOVE_BOOK', id: book.id})}>
+            <div>
+                <div className='title'>{book.title}</div>
+                <div className='author'>{book.author}</div> 
+            </div>
+            <span className='remove-btn'>X</span>
+        </li>
 }
 
-export const BookContext = createContext();
-
-const defaultBooks = [
-    {title: 'knjiga1', id: 1, author:'neko'},
-    {title: 'knjiga2', id: 2, author:'neko'},
-    {title: 'knjiga3', id: 3, author:'neko'}
-];
-
-
+export default BookListItem;
